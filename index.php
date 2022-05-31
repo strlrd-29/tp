@@ -71,7 +71,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
     <tbody class="bg-gray-100">
         <?php while ($row = $result->fetch()) : ?>
             <tr class="h-10 border-b hover:bg-gray-200">
-                <td><?php echo htmlspecialchars($row['immat']) ?></td>
+                <td class='cursor-pointer'><?php echo htmlspecialchars($row['immat']) ?></td>
                 <td><?php echo htmlspecialchars($row['brand']) ?></td>
                 <td><?php echo htmlspecialchars($row['model']) ?></td>
                 <td><?php echo htmlspecialchars($row['priceByDay']) ?></td>
@@ -90,7 +90,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="clientID">
                 Registration Number
             </label>
-            <input type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="immat" placeholder="Registration Number" required value="<?php echo $immat ?>" />
+            <input id='registration' type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="immat" placeholder="Registration Number" required value="<?php echo $immat ?>" />
             <div class="text-red-500"><?php echo $error; ?></div>
         </div>
         <div class="">
@@ -101,7 +101,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
             <input type="hidden" name="update" />
         </div>
         <div class="">
-            <input type="submit" class="text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2 hover:border-orange-500 border " value="Update">
+            <input id='registration' type="submit" class="text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2 hover:border-orange-500 border " value="Update">
         </div>
 
     </form>
@@ -111,7 +111,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="registration">
                 Registration Number
             </label>
-            <input type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="immat" placeholder="Registration Number" required value="<?php echo $immat ?>" />
+            <input id='registration2' type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="immat" placeholder="Registration Number" required value="<?php echo $immat ?>" />
             <input type="hidden" name="delete" />
             <div class="text-red-500 mb-2"><?php echo $delete_error; ?></div>
         </div>
@@ -122,6 +122,17 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
     </form>
 </div>
 </div>
+<script>
+    document.addEventListener('click', function(e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement,
+            text = target.textContent || target.innerText;
+        if (parseFloat(text) > 0) {
+            document.getElementById('registration').value = text;
+            document.getElementById('registration2').value = text;
+        }
+    }, false)
+</script>
 </body>
 <?php include 'templates/footer.php' ?>
 

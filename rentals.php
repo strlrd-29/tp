@@ -75,7 +75,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
     <tbody class="bg-gray-100">
         <?php while ($row = $result->fetch()) : ?>
             <tr class="h-10 border-b hover:bg-gray-200">
-                <td><?php echo htmlspecialchars($row['rentalID']) ?></td>
+                <td class='cursor-pointer'><?php echo htmlspecialchars($row['rentalID']) ?></td>
                 <td><?php echo htmlspecialchars($row['locDate']) ?></td>
                 <td><?php echo htmlspecialchars($row['sDate']) ?></td>
                 <td><?php echo htmlspecialchars($row['eDate']) ?></td>
@@ -99,10 +99,10 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
     <form action="rentals.php" method="POST" class="p-4 border-2 border-gray-300 rounded-xl">
 
         <div class="">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="rentalID">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="rentalid">
                 Rental ID
             </label>
-            <input type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="rentalID" placeholder="Rental ID" required value="<?php echo $rentalID ?>" />
+            <input id='rentalid' type="text" class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="rentalID" placeholder="Rental ID" required value="<?php echo $rentalID ?>" />
             <div class="text-red-500 mb-2"><?php echo $error; ?></div>
         </div>
         <div class="">
@@ -120,10 +120,10 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
 
     <form action="rentals.php" method="POST" class="p-4 border-2 border-gray-300 rounded-xl">
         <div class="">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="rentalID">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="rentalid2">
                 Rental ID
             </label>
-            <input type="text" id='rentalID' class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="rentalid" placeholder="Rental ID" required />
+            <input type="text" id='rentalid2' class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="rentalid" placeholder="Rental ID" required />
             <div class="text-red-500 mb-2"><?php echo $delete_error; ?></div>
             <input type="hidden" name="delete" />
         </div>
@@ -134,6 +134,18 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['delete']))) {
     </form>
 </div>
 </div>
+<script>
+    document.addEventListener('click', function(e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement,
+            text = target.textContent || target.innerText;
+        if (parseFloat(text) > 0) {
+            document.getElementById('rentalid').value = text;
+            document.getElementById('rentalid2').value = text;
+        }
+
+    }, false)
+</script>
 </body>
 <?php include 'templates/footer.php' ?>
 

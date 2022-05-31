@@ -115,7 +115,7 @@ include 'templates/header.php';
         </div>
 
         <div class="mx-auto px-3 mt-3">
-            <input type='submit' value='submit' name='submit' class='text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
+            <input type='submit' value='submit' name='submit' class='border hover:border-orange-500 text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
         </div>
     </div>
 </form>

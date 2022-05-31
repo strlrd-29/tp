@@ -40,11 +40,6 @@ if (isset($_POST['submit'])) {
             $data['sDate'] = '';
             $data['eDate'] = '';
             $data['rentalType'] = '';
-            echo '<div style="bottom: 70px;" class="success_animation
-                absolute right-1/2 w-1/4 bg-green-500 text-white text-center p-2 rounded-lg
-            ">
-                <strong>Success!</strong>
-            </div>';
         } catch (PDOException $e) {
             echo $e->getMessage();
             $error = "Client id  or car immat number is not valid";
@@ -107,7 +102,7 @@ include 'templates/header.php';
         </div>
 
         <div class="mx-auto px-3 mt-3">
-            <input type='submit' value='submit' name='submit' class='text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
+            <input type='submit' value='submit' name='submit' class='border hover:border-orange-500 text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
         </div>
     </div>
 </form>

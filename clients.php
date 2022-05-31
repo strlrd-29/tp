@@ -49,7 +49,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
     <tbody class="bg-gray-100">
         <?php while ($row = $result->fetch()) : ?>
             <tr class="h-10 border-b hover:bg-gray-200">
-                <td><?php echo htmlspecialchars($row['idClient']) ?></td>
+                <td class='cursor-pointer'><?php echo htmlspecialchars($row['idClient']) ?></td>
                 <td><?php echo htmlspecialchars($row['fName']) ?></td>
                 <td><?php echo htmlspecialchars($row['lName']) ?></td>
                 <td><?php echo htmlspecialchars($row['phone']) ?></td>
@@ -66,7 +66,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="clientID">
                 Client ID
             </label>
-            <input type="text" id='clientID' class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="clientid" placeholder="Client ID" required />
+            <input id='clientid' type="text" id='clientID' class="mb-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="clientid" placeholder="Client ID" required />
             <div class="text-red-500 mb-2"><?php echo $error; ?></div>
         </div>
         <div class="">
@@ -75,6 +75,16 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
     </form>
 </div>
 </div>
+<script>
+    document.addEventListener('click', function(e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement,
+            text = target.textContent || target.innerText;
+        if (parseFloat(text) > 0) {
+            document.getElementById('clientid').value = text;
+        }
+    }, false)
+</script>
 </body>
 <?php include 'templates/footer.php' ?>
 

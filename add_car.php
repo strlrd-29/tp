@@ -81,7 +81,7 @@ include 'templates/header.php';
             <input required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="priceByDay" type="number" min="0" name="priceByDay" placeholder="Car Price by Day" value="<?php echo $data['priceByDay'] ?>" />
         </div>
         <div class="mx-auto px-3 mt-3">
-            <input type='submit' value='submit' name='submit' class='text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
+            <input type='submit' value='submit' name='submit' class='border hover:border-orange-500 text-xl rounded-xl bg-orange-500 text-white hover:bg-white hover:text-orange-500 mx-auto p-2' />
         </div>
     </div>
 </form>
